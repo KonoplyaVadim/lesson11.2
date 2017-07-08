@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="SampleApp">
+<head>
+    <meta charset="UTF-8">
+    <title>forAng</title>
+    <script src="Libraries/angular.js"></script>
+    <script src="js/les11.js"></script>
+    <style>
+        .firstRow{
+            background-color: #c9302c;
+        }
+        .otherRow{
+            background-color: transparent;
+        }
+        #showByIf{
+            width:200px;
+            height:200px;
+            background-color: #5bc0de;
+            float:left;
+            margin-right: 20px;
+        }
+        #showByShow{
+            width:200px;
+            height:200px;
+            background-color: #5cb85c;
+            float:left;
+            margin-right: 20px;
+        }
+        #showByHide{
+            width:200px;
+            height:200px;
+            background-color: crimson;
+            float:left;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+<h3 style="text-decoration: underline"><b>Task2</b></h3>
+<div ng-controller="SampleAppCtrl">
+    <div><span>Имя: {{items.name}};</span><span> Возраст: {{items.age}};</span><span> Город: {{items.city}};</span></div>
+    <div>
+        Имя: <span ng-bind="items.name"></span>;
+        Возраст: <span ng-bind="items.age"></span>;
+        Город: <span ng-bind="items.city"></span>;
+    </div>
+    <div ng-bind-template="Name: {{items.name}}; Age: {{items.age}}; City:{{items.city}}"></div>
+</div>
+<h3 style="text-decoration: underline"><b>Task3,4</b></h3>
+<div ng-controller="tabCtrl">
+    <table class="table" border="1px solid">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Имя</th>
+            <th>Возраст</th>
+        </tr>
+        </thead>
+        <tr ng-repeat="item in list" ng-class="$first ? 'firstRow':'otherRow'">
+            <td>{{$index+1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.age}}</td>
+        </tr>
+    </table>
+    <ol type="1">
+        <li ng-repeat="item in list" ng-class="$first ? 'firstRow':'otherRow'">{{item.name}} , {{item.age}}</li>
+    </ol>
+</div>
+<h3 style="text-decoration: underline"><b>Task5</b></h3>
+<div ng-controller="skLang">
+    <button ng-click="showSkills()">Skills</button>
+    <button ng-click="showLang()">Languages</button>
+    <div ng-include="url"></div>
+</div>
+<h3 style="text-decoration: underline"><b>Task6</b></h3>
+<div ng-controller="forTask5Ctrl">
+    <div  style="margin-bottom:20px">
+        <button ng-click="clickedFirst()">Show 1st div</button><br>
+        <button ng-click="clickedSec()">Show 2nd div</button><br>
+        <button ng-click="clickedThird()">Show 3rd div</button><br>
+    </div>
+    <div id="showByIf" ng-if="showFirstDiv"></div>
+    <div id="showByShow" ng-show="showSecDiv"></div>
+    <div id="showByHide" ng-hide="showThirdDiv"></div>
+</div>
+</body>
+</html>
